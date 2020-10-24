@@ -3,6 +3,7 @@ import java.util.Random;
 public class StartGame {
 
     public static final int START_POSITION = 0;
+    public static final int WINNING_POSITION = 100;
     public static final int LADDER = 2;
     public static final int SNAKE = 3;
 
@@ -10,19 +11,30 @@ public class StartGame {
 
         int playerPosition = START_POSITION, dieRoll, options;
         Random random = new Random();
-        dieRoll = random.nextInt(6) + 1;
-        options = random.nextInt(3) + 1;
 
-        if (options == LADDER) {
+        while(playerPosition < WINNING_POSITION) {
 
-            playerPosition += dieRoll;
-            System.out.println("Player landed on a ladder");
+            dieRoll = random.nextInt(6) + 1;
+            options = random.nextInt(3) + 1;
 
-        } else if (options == SNAKE){
+            if (options == LADDER) {
 
-            playerPosition -= dieRoll;
-            System.out.println("Player landed on a snake");
+                playerPosition += dieRoll;
+                if(playerPosition > WINNING_POSITION) {
+                    playerPosition = WINNING_POSITION;
+                }
+                System.out.println("Player landed on a ladder");
 
+            } else if (options == SNAKE) {
+
+                playerPosition -= dieRoll;
+                if(playerPosition < START_POSITION) {
+                    playerPosition = START_POSITION;
+                }
+                System.out.println("Player landed on a snake");
+
+            }
+            System.out.println("Player position: " + playerPosition);
         }
 
     }

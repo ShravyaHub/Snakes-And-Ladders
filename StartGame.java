@@ -9,12 +9,13 @@ public class StartGame {
 
     public static void main(String[] args) {
 
-        int playerPosition = START_POSITION, dieRoll, options;
+        int playerPosition = START_POSITION, dieRoll, options, numberOfDieRolls = 0;
         Random random = new Random();
 
         while(playerPosition < WINNING_POSITION) {
 
             dieRoll = random.nextInt(6) + 1;
+            numberOfDieRolls++;
             options = random.nextInt(3) + 1;
 
             if (options == LADDER) {
@@ -40,6 +41,8 @@ public class StartGame {
             }
             System.out.println("Player position: " + playerPosition);
         }
+
+        System.out.println("The die was rolled " + numberOfDieRolls + " to win the game");
 
     }
 

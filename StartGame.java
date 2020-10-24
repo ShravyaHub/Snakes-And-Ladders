@@ -19,11 +19,15 @@ public class StartGame {
 
             if (options == LADDER) {
 
-                playerPosition += dieRoll;
-                if(playerPosition > WINNING_POSITION) {
-                    playerPosition = WINNING_POSITION;
+                if (playerPosition + dieRoll <= WINNING_POSITION) {
+
+                    playerPosition += dieRoll;
+                    System.out.println("Player landed on a ladder");
+
+                } else {
+
+                    System.out.println("Player needs " + (WINNING_POSITION - playerPosition) + " to win!");
                 }
-                System.out.println("Player landed on a ladder");
 
             } else if (options == SNAKE) {
 
